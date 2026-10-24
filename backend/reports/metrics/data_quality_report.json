@@ -1,0 +1,121 @@
+{
+  "rows": 525600,
+  "columns": [
+    "timestamp",
+    "vibration",
+    "torque",
+    "temp_solid",
+    "temp_liquid"
+  ],
+  "unparseable_timestamps": 0,
+  "timestamp_min": "2022-09-05 01:00:00",
+  "timestamp_max": "2023-09-05 00:59:00",
+  "duplicate_timestamps": 0,
+  "is_monotonic_increasing": true,
+  "pct_intervals_exactly_1min": 100.0,
+  "gap_count": 0,
+  "largest_gap_minutes": 0.0,
+  "missing_minutes_total": 0.0,
+  "top_gaps": [],
+  "expected_records_at_1min": 525600,
+  "coverage_pct": 100.0,
+  "span_days": 364.99930555555557,
+  "missing_values": {
+    "vibration": 43094,
+    "torque": 43094,
+    "temp_solid": 43094,
+    "temp_liquid": 58704
+  },
+  "numeric_dtypes_ok": true,
+  "non_finite_values": {
+    "vibration": 0,
+    "torque": 0,
+    "temp_solid": 0,
+    "temp_liquid": 0
+  },
+  "summary_stats": {
+    "vibration": {
+      "count": 482506.0,
+      "mean": 5.362234282170448,
+      "std": 2.9090904590013125,
+      "min": 0.05188067629933357,
+      "1%": 0.1372273065783876,
+      "50%": 6.157564735412597,
+      "99%": 9.482444159189866,
+      "max": 19.54273732503255
+    },
+    "torque": {
+      "count": 482506.0,
+      "mean": 70.26693265427967,
+      "std": 20.09152091010638,
+      "min": 0.0,
+      "1%": 2.8848706245422364,
+      "50%": 76.17334289550782,
+      "99%": 89.59563446044922,
+      "max": 94.4655532836914
+    },
+    "temp_solid": {
+      "count": 482506.0,
+      "mean": 66.1692091973082,
+      "std": 7.129239875980553,
+      "min": 17.238672083074395,
+      "1%": 35.34394570979105,
+      "50%": 67.24292667095477,
+      "99%": 74.93675231933594,
+      "max": 81.50972747802734
+    },
+    "temp_liquid": {
+      "count": 466896.0,
+      "mean": 55.49909277213871,
+      "std": 22.66720469790328,
+      "min": 0.0,
+      "1%": 0.0,
+      "50%": 63.7596554909983,
+      "99%": 72.43341404841496,
+      "max": 115.477019056762
+    }
+  },
+  "negative_values": {
+    "vibration": 0,
+    "torque": 0,
+    "temp_solid": 0,
+    "temp_liquid": 0
+  },
+  "threshold_exceedances": {
+    "vibration": {
+      "threshold": 12.0,
+      "count": 394,
+      "pct": 0.07496194824961948
+    },
+    "torque": {
+      "threshold": 85.0,
+      "count": 79243,
+      "pct": 15.076674277016744
+    },
+    "temp_solid": {
+      "threshold": 85.0,
+      "count": 0,
+      "pct": 0.0
+    },
+    "temp_liquid": {
+      "threshold": 85.0,
+      "count": 7,
+      "pct": 0.0013318112633181126
+    }
+  },
+  "any_channel_exceedance_count": 79632,
+  "any_channel_exceedance_pct": 15.15068493150685,
+  "longest_constant_run_minutes": {
+    "vibration": 8586,
+    "torque": 1374,
+    "temp_solid": 1374,
+    "temp_liquid": 39460
+  },
+  "warnings": [
+    "Missing sensor values: {'vibration': 43094, 'torque': 43094, 'temp_solid': 43094, 'temp_liquid': 58704}",
+    "vibration: constant for 8586 consecutive minutes (possible stuck sensor / shutdown).",
+    "torque: constant for 1374 consecutive minutes (possible stuck sensor / shutdown).",
+    "temp_solid: constant for 1374 consecutive minutes (possible stuck sensor / shutdown).",
+    "temp_liquid: constant for 39460 consecutive minutes (possible stuck sensor / shutdown)."
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "started": "2026-10-23 14:03:29",
+  "python": "3.10.11",
+  "data_quality_warnings": [
+    "Missing sensor values: {'vibration': 43094, 'torque': 43094, 'temp_solid': 43094, 'temp_liquid': 58704}",
+    "vibration: constant for 8586 consecutive minutes (possible stuck sensor / shutdown).",
+    "torque: constant for 1374 consecutive minutes (possible stuck sensor / shutdown).",
+    "temp_solid: constant for 1374 consecutive minutes (possible stuck sensor / shutdown).",
+    "temp_liquid: constant for 39460 consecutive minutes (possible stuck sensor / shutdown)."
+  ],
+  "prep_decisions": [
+    "Reindexed 525,600 rows to a strict 1-min grid (525,600 rows; 0 missing minutes inserted as NaN, no interpolation).",
+    "temp_liquid == 0.0 \u00b0C on 60,393 rows treated as sensor outage (excluded from modelling, kept in raw file).",
+    "Vibration flat (<1 mm/s daily median while torque \u2265 30 %) from 2022-09-05 to 2022-11-07 (92,100 rows) - treated as unreliable vibration regime and excluded.",
+    "353,313 of 525,600 rows (67.2 %) have all four channels valid."
+  ],
+  "split": {
+    "cutoff": "2023-06-05 01:00:00",
+    "note": "first 9 months train / remainder test",
+    "train_valid_rows": 260627,
+    "test_valid_rows": 92686
+  },
+  "label_stats": {
+    "strong_any__train": {
+      "valid_rows": 260627,
+      "positives": 48814,
+      "rate_pct": 18.729448598955596
+    },
+    "strong_any__test": {
+      "valid_rows": 92686,
+      "positives": 22499,
+      "rate_pct": 24.274431953045767
+    },
+    "weak_vibration__train": {
+      "valid_rows": 260627,
+      "positives": 338,
+      "rate_pct": 0.12968725419852892
+    },
+    "weak_vibration__test": {
+      "valid_rows": 92686,
+      "positives": 56,
+      "rate_pct": 0.06041904926310338
+    },
+    "weak_combined__train": {
+      "valid_rows": 260627,
+      "positives": 338,
+      "rate_pct": 0.12968725419852892
+    },
+    "weak_combined__test": {
+      "valid_rows": 92686,
+      "positives": 63,
+      "rate_pct": 0.0679714304209913
+    }
+  },
+  "health_scorer": {
+    "weights": {
+      "vibration": 0.5,
+      "torque": 0.3,
+      "temp_max": 0.2
+    },
+    "low_q": 0.5,
+    "high_q": 0.999,
+    "bounds": {
+      "vibration": [
+        7.053737163543701,
+        9.944497710418759
+      ],
+      "torque": [
+        79.55697886149089,
+        90.18234252929688
+      ],
+      "temp_max": [
+        70.14514923095703,
+        75.08479031649503
+      ]
+    }
+  },
+  "isolation_forest_default": {
+    "features": [
+      "selected",
+      "all_valid"
+    ],
+    "contamination": 0.01,
+    "threshold": 0.6480099468170766
+  },
+  "isolation_forest_default_metrics": [
+    {
+      "features": "selected",
+      "train_rows": "all_valid",
+      "contamination": 0.01,
+      "threshold": 0.6480099468,
+      "label": "weak_vibration",
+      "pw_n": 92321,
+      "pw_positives": 56,
+      "pw_positive_rate_pct": 0.0606579218,
+      "pw_predicted_positives": 3133,
+      "pw_tp": 44,
+      "pw_fp": 3089,
+      "pw_fn": 12,
+      "pw_tn": 89176,
+      "pw_precision": 0.0140440472,
+      "pw_recall": 0.7857142857,
+      "pw_f1": 0.0275948573,
+      "pw_pr_auc": 0.0099625679,
+      "pw_roc_auc": 0.9707267885,
+      "pw_pr_baseline": 0.0006065792,
+      "ev_label_events": 15,
+      "ev_alert_events": 45,
+      "ev_events_detected": 14,
+      "ev_event_recall": 0.9333333333,
+      "ev_events_early_warning": 12,
+      "ev_median_lead_min": 10.0,
+      "ev_mean_lead_min": 22.6666666667,
+      "ev_false_alarm_events": 30,
+      "ev_alert_event_precision": 0.3333333333,
+      "ev_observed_weeks": 9.1588293651,
+      "ev_false_alarms_per_week": 3.2755277781,
+      "ev_merge_gap_min": 30,
+      "ev_lookback_min": 120,
+      "ev_tolerance_min": 30
+    },
+    {
+      "features": "selected",
+      "train_rows": "all_valid",
+      "contamination": 0.01,
+      "threshold": 0.6480099468,
+      "label": "weak_combined",
+      "pw_n": 92321,
+      "pw_positives": 58,
+      "pw_positive_rate_pct": 0.0628242762,
+      "pw_predicted_positives": 3133,
+      "pw_tp": 45,
+      "pw_fp": 3088,
+      "pw_fn": 13,
+      "pw_tn": 89175,
+      "pw_precision": 0.0143632301,
+      "pw_recall": 0.775862069,
+      "pw_f1": 0.0282043247,
+      "pw_pr_auc": 0.0102413114,
+      "pw_roc_auc": 0.9706093189,
+      "pw_pr_baseline": 0.0006282428,
+      "ev_label_events": 16,
+      "ev_alert_events": 45,
+      "ev_events_detected": 15,
+      "ev_event_recall": 0.9375,
+      "ev_events_early_warning": 12,
+      "ev_median_lead_min": 10.0,
+      "ev_mean_lead_min": 22.6666666667,
+      "ev_false_alarm_events": 29,
+      "ev_alert_event_precision": 0.3555555556,
+      "ev_observed_weeks": 9.1588293651,
+      "ev_false_alarms_per_week": 3.1663435188,
+      "ev_merge_gap_min": 30,
+      "ev_lookback_min": 120,
+      "ev_tolerance_min": 30
+    },
+    {
+      "features": "selected",
+      "train_rows": "all_valid",
+      "contamination": 0.01,
+      "threshold": 0.6480099468,
+      "label": "strong_any",
+      "pw_n": 92321,
+      "pw_positives": 22482,
+      "pw_positive_rate_pct": 24.3519892549,
+      "pw_predicted_positives": 3133,
+      "pw_tp": 46,
+      "pw_fp": 3087,
+      "pw_fn": 22436,
+      "pw_tn": 66752,
+      "pw_precision": 0.014682413,
+      "pw_recall": 0.0020460813,
+      "pw_f1": 0.0035916455,
+      "pw_pr_auc": 0.2521032263,
+      "pw_roc_auc": 0.5715801066,
+      "pw_pr_baseline": 0.2435198925,
+      "ev_label_events": 126,
+      "ev_alert_events": 45,
+      "ev_events_detected": 28,
+      "ev_event_recall": 0.2222222222,
+      "ev_events_early_warning": 22,
+      "ev_median_lead_min": 48.0,
+      "ev_mean_lead_min": 56.7272727273,
+      "ev_false_alarm_events": 11,
+      "ev_alert_event_precision": 0.7555555556,
+      "ev_observed_weeks": 9.1588293651,
+      "ev_false_alarms_per_week": 1.201026852,
+      "ev_merge_gap_min": 30,
+      "ev_lookback_min": 120,
+      "ev_tolerance_min": 30
+    }
+  ],
+  "xgb_default": {
+    "label": "weak_vibration",
+    "horizon_min": 30,
+    "variant": "none",
+    "threshold": 0.0005423935363069177,
+    "n_synthetic": 0,
+    "shap_rows": 2500,
+    "shap_positives": 451
+  },
+  "autoencoder": {
+    "threshold": 1.5037780223168689,
+    "epochs": 165,
+    "val_loss": 0.028398568287025524,
+    "backend": "sklearn-mlp",
+    "healthy_fit_rows": 37671,
+    "healthy_val_rows": 9417
+  },
+  "residual_vs_labels": {
+    "weak_vibration": {
+      "pointwise": {
+        "n": 92686,
+        "positives": 56,
+        "positive_rate_pct": 0.06041904926310338,
+        "predicted_positives": 2946,
+        "tp": 0,
+        "fp": 2946,
+        "fn": 56,
+        "tn": 89684,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "events_detected": 1,
+      "label_events": 15,
+      "alert_events": 16,
+      "false_alarm_events": 15,
+      "false_alarms_per_week": 1.6313143301037911,
+      "median_lead_min": 120.0
+    },
+    "strong_any": {
+      "pointwise": {
+        "n": 92686,
+        "positives": 22499,
+        "positive_rate_pct": 24.274431953045767,
+        "predicted_positives": 2946,
+        "tp": 307,
+        "fp": 2639,
+        "fn": 22192,
+        "tn": 67548,
+        "precision": 0.1042090970807875,
+        "recall": 0.013645050891150718,
+        "f1": 0.024130477500491257
+      },
+      "events_detected": 9,
+      "label_events": 127,
+      "alert_events": 16,
+      "false_alarm_events": 11,
+      "false_alarms_per_week": 1.196297175409447,
+      "median_lead_min": 88.0
+    }
+  },
+  "residual_thresholds": {
+    "temp_solid": 5.206018921397089,
+    "temp_liquid": 5.969356624307721
+  },
+  "finished": "2026-10-23 14:06:04",
+  "elapsed_s": 154.9
+}
