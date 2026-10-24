@@ -77,6 +77,59 @@ button[kind="primary"], .stButton>button { border-radius: 10px; font-weight:600;
 div[data-baseweb="tab-list"] { gap: .4rem; }
 button[data-baseweb="tab"] { border-radius: 10px 10px 0 0; }
 
+/* ── Force dark background on ALL selectboxes / dropdowns ── */
+div[data-baseweb="select"] > div,
+div[data-baseweb="select"] > div:hover,
+div[data-baseweb="select"] > div:focus-within {
+  background-color: #0f172a !important;
+  border-color: rgba(148,163,184,0.30) !important;
+  color: #e2e8f0 !important;
+}
+div[data-baseweb="select"] svg { fill: #94a3b8 !important; }
+
+/* Dropdown option list panel */
+ul[data-baseweb="menu"],
+div[data-baseweb="popover"] > div,
+div[role="listbox"] {
+  background-color: #0f172a !important;
+  border: 1px solid rgba(148,163,184,0.20) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+}
+/* Individual options */
+li[role="option"],
+div[role="option"] {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+li[role="option"]:hover,
+div[role="option"]:hover,
+li[aria-selected="true"],
+div[aria-selected="true"] {
+  background-color: rgba(34,211,238,0.12) !important;
+  color: #22d3ee !important;
+}
+
+/* Number inputs */
+div[data-baseweb="input"] > div,
+div[data-baseweb="base-input"] {
+  background-color: #0f172a !important;
+  border-color: rgba(148,163,184,0.30) !important;
+  color: #e2e8f0 !important;
+}
+input[type="number"], input[type="text"] {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+/* Slider track */
+div[data-testid="stSlider"] div[role="slider"] { background: #22d3ee !important; }
+
+/* Checkbox */
+div[data-baseweb="checkbox"] > div:first-child {
+  background-color: rgba(34,211,238,0.15) !important;
+  border-color: rgba(34,211,238,0.55) !important;
+}
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: none;} }
 @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0);} 50% { box-shadow: 0 0 22px 0 rgba(255,255,255,0.12);} }
 </style>
